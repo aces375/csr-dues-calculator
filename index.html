@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSR Dues Calculator</title>
+
+<style>
+:root {
+    --csr-blue: #00539B;
+    --csr-red: #ED1C24;
+    --bg: #f3f8fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f8fc, #e8f0fa);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+}
+
+.card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,.12);
+}
+
+.header {
+    background: var(--csr-blue);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.logo {
+    width: 180px;
+    max-width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    opacity: 0.95;
+}
+
+.content {
+    padding: 35px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d7dde5;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--csr-blue);
+}
+
+.result-card {
+    background: #eef5ff;
+    border-left: 6px solid var(--csr-red);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.result-title {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.result-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--csr-blue);
+}
+
+.breakdown {
+    margin-top: 20px;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.note {
+    background: #edf9ed;
+    color: #166534;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.example {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: #444;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .result-amount {
+        font-size: 2.2rem;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <div class="header">
+            <img src="csr-logo.png" alt="CSR Logo" class="logo">
+
+            <h1>Union Dues Calculator</h1>
+
+            <p>
+                Calculate your estimated dues based on
+                <strong>0.5% of gross pay per paycheck</strong>
+            </p>
+        </div>
+
+        <div class="content">
+
+            <label for="grossPay">Gross Pay Per Paycheck ($)</label>
+
+            <input
+                type="number"
+                id="grossPay"
+                placeholder="Example: 2000"
+            >
+
+            <label for="frequency">Pay Frequency</label>
+
+            <select id="frequency">
+                <option value="52">Weekly (52 paychecks)</option>
+                <option value="26" selected>Bi-Weekly (26 paychecks)</option>
+                <option value="24">Semi-Monthly (24 paychecks)</option>
+                <option value="12">Monthly (12 paychecks)</option>
+            </select>
+
+            <div class="result-card">
+
+                <div class="result-title">
+                    Estimated Dues Per Paycheck
+                </div>
+
+                <div class="result-amount" id="duesResult">
+                    $0.00
+                </div>
+
+                <div class="breakdown">
+
+                    <div class="breakdown-row">
+                        <span>Per Paycheck</span>
+                        <strong id="perCheck">$0.00</strong>
+                    </div>
+
+                    <div class="breakdown-row">
+                        <span>Annual Estimate</span>
+                        <strong id="annualDues">$0.00</strong>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="note">
+                ✅ Union dues are calculated at no more than
+                <strong>0.5%</strong> of gross pay per paycheck.
+            </div>
+
+            <div class="example">
+                <strong>Example:</strong><br>
+                $2,000 paycheck = $10 dues<br>
+                $3,000 paycheck = $15 dues
+            </div>
+
+        </div>
+
+        <div class="footer">
+            CSR • Working Together Since 1979
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+function calculateDues() {
+
+    const grossPay =
+        parseFloat(document.getElementById("grossPay").value) || 0;
+
+    const periods =
+        parseInt(document.getElementById("ossPay * 0.005;
+    const annual = dues * periods;
+
+    document.getElementById("duesResult").textContent =
+        dues.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD"
+        });
+
+    document.getElementById("perCheck").textContent =
+        dues.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD"
+        });
+
+    document.getElementById("annualDues").textContent =
+        annual.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD"
+        });
+}
+
+document.getElementById("grossPay")
+    .addEventListener("input", calculateDues);
+
+document.getElementById("frequency")
+    .addEventListener("change", calculateDues);
+
+</script>
+
+</body>
+</html>
