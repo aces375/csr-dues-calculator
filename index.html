@@ -242,7 +242,10 @@ function calculateDues() {
         parseFloat(document.getElementById("grossPay").value) || 0;
 
     const periods =
-        parseInt(document.getElementById("frequency").value) || 26;    
+        parseInt(document.getElementById("frequency").value) || 26;
+
+    const dues = grossPay * 0.005;
+    const annual = dues * periods;
 
     document.getElementById("duesResult").textContent =
         dues.toLocaleString("en-US", {
@@ -262,6 +265,14 @@ function calculateDues() {
             currency: "USD"
         });
 }
+
+document.getElementById("grossPay")
+    .addEventListener("input", calculateDues);
+
+document.getElementById("frequency")
+    .addEventListener("change", calculateDues);
+
+calculateDues();
 
 document.getElementById("grossPay")
     .addEventListener("input", calculateDues);
