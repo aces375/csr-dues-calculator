@@ -242,8 +242,7 @@ function calculateDues() {
         parseFloat(document.getElementById("grossPay").value) || 0;
 
     const periods =
-        parseInt(document.getElementById("ossPay * 0.005;
-    const annual = dues * periods;
+        parseInt(document.getElementById("frequency").value) || 26;    
 
     document.getElementById("duesResult").textContent =
         dues.toLocaleString("en-US", {
